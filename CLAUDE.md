@@ -37,6 +37,12 @@ cd frontend && npx vue-tsc --noEmit
 
 # Frontend production build
 cd frontend && npm run build
+
+# Backend tests
+cd backend && uv run pytest -v
+
+# Frontend unit tests
+cd frontend && npm run test
 ```
 
 Environment: copy `.env.example` to `.env` and set `ANTHROPIC_API_KEY`.

@@ -139,6 +139,40 @@ docker compose down
 
 ---
 
+## Running Unit Tests
+
+### Backend (pytest)
+
+No app running required — tests mock all external dependencies.
+
+```bash
+cd backend
+uv sync
+uv run pytest -v
+```
+
+Expected output: **18 tests passing** across schemas, analyzer, and API layers.
+
+### Frontend (Vitest)
+
+No app running required — components are tested in isolation with happy-dom.
+
+```bash
+cd frontend
+npm install
+npm run test
+```
+
+Expected output: **22 tests passing** across the API client and all Vue components.
+
+To run in watch mode during development:
+
+```bash
+npm run test:watch
+```
+
+---
+
 ## Running E2E Tests (Playwright)
 
 The project includes Playwright tests that exercise the full user flow and capture screenshots.
@@ -179,6 +213,12 @@ FitScoreAI/
 │   │   ├── main.py           # API routes (/api/analyze, /api/health)
 │   │   ├── analyzer.py       # PDF parsing + Claude API integration
 │   │   └── schemas.py        # Pydantic models (Metric, AnalysisResponse)
+│   ├── tests/                # pytest unit tests (18 tests)
+│   │   ├── conftest.py       # Fixtures (TestClient, sample data)
+│   │   ├── fixtures/         # Sample PDF for extraction tests
+│   │   ├── test_schemas.py
+│   │   ├── test_analyzer.py
+│   │   └── test_api.py
 │   ├── pyproject.toml        # Python dependencies (managed by uv)
 │   └── Dockerfile
 ├── frontend/                 # Vue 3 frontend
@@ -186,11 +226,13 @@ FitScoreAI/
 │   │   ├── App.vue           # Root component (step flow)
 │   │   ├── api.ts            # API service (axios calls)
 │   │   ├── types.ts          # TypeScript interfaces
+│   │   ├── __tests__/        # Vitest unit tests — API client
 │   │   └── components/
 │   │       ├── UploadStep.vue
 │   │       ├── JDInputStep.vue
 │   │       ├── ResultsDashboard.vue
-│   │       └── MetricCard.vue
+│   │       ├── MetricCard.vue
+│   │       └── __tests__/    # Vitest unit tests — components (22 tests)
 │   ├── e2e/                  # Playwright E2E tests
 │   │   ├── fitscore-demo.spec.ts
 │   │   └── screenshots/      # Auto-captured screenshots
