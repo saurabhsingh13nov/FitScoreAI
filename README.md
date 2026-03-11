@@ -14,7 +14,22 @@ Built with **Vue 3** (frontend) and **FastAPI** (backend), powered by **Claude A
 
 ---
 
-## Option 1: Run Locally (Recommended for Development)
+## Quick Start: Docker Compose (Recommended)
+
+```bash
+cp .env.example .env
+# Edit .env and add your ANTHROPIC_API_KEY
+
+docker compose up --build
+```
+
+Open **http://localhost** — that's it.
+
+To stop: `docker compose down`
+
+---
+
+## Option 1: Run Locally (for Development)
 
 ### Step 1: Clone and navigate to the project
 
@@ -124,6 +139,37 @@ docker compose down
 
 ---
 
+## Running E2E Tests (Playwright)
+
+The project includes Playwright tests that exercise the full user flow and capture screenshots.
+
+### Prerequisites
+
+```bash
+cd frontend
+npm install
+npx playwright install chromium
+```
+
+### Run tests
+
+Make sure the app is running first (via Docker Compose or locally), then:
+
+```bash
+cd frontend
+npx playwright test
+```
+
+Screenshots are saved to `frontend/e2e/screenshots/`.
+
+To run in headed mode (see the browser):
+
+```bash
+npx playwright test --headed
+```
+
+---
+
 ## Project Structure
 
 ```
@@ -145,6 +191,10 @@ FitScoreAI/
 │   │       ├── JDInputStep.vue
 │   │       ├── ResultsDashboard.vue
 │   │       └── MetricCard.vue
+│   ├── e2e/                  # Playwright E2E tests
+│   │   ├── fitscore-demo.spec.ts
+│   │   └── screenshots/      # Auto-captured screenshots
+│   ├── playwright.config.ts  # Playwright config
 │   ├── vite.config.ts        # Vite config + API proxy
 │   ├── nginx.conf            # Production nginx config
 │   └── Dockerfile
