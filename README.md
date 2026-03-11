@@ -4,6 +4,9 @@ AI-powered resume-to-job-description fit analysis. Upload your PDF resume, paste
 
 Built with **Vue 3** (frontend) and **FastAPI** (backend), powered by **Claude AI**.
 
+<img width="1280" height="1327" alt="06-results-overview" src="https://github.com/user-attachments/assets/631c4ae0-abdc-49e4-8ba9-f9f110b090b8" />
+
+
 ---
 
 ## Prerequisites
