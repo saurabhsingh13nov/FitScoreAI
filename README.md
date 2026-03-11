@@ -263,7 +263,7 @@ FitScoreAI/
 
 ---
 
-## Troubleshooting
+## Troubleshooting Steps
 
 ### "Could not extract text from the PDF"
 
