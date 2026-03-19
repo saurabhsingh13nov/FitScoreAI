@@ -7,6 +7,7 @@ Built with **Vue 3** (frontend) and **FastAPI** (backend), powered by **Claude A
 <img width="1280" height="1327" alt="06-results-overview" src="https://github.com/user-attachments/assets/631c4ae0-abdc-49e4-8ba9-f9f110b090b8" />
 
 
+Wiki Page: [here](https://github.com/saurabhsingh13nov/FitScoreAI/wiki)
 ---
 
 ## Prerequisites
